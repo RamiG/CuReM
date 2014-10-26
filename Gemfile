@@ -12,20 +12,18 @@ gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem 'pg'
 
-group :doc do
-  gem 'sdoc', '~> 0.4.0'
-end
-
 group :development do
   gem 'spring'
 end
 
 group :development, :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'faker'
   gem 'rspec-rails'
   gem 'rspec-its'
-  gem 'capybara'
 
-  gem 'pry'
   gem 'byebug'
+  gem 'pry'
   gem 'pry-byebug'
 end

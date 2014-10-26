@@ -1,5 +1,13 @@
-require 'rails_helper'
+describe AdminUser, :type => :model do
+  let(:admin) { FactoryGirl.create(:admin_user) }
 
-RSpec.describe AdminUser, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { admin }
+
+  it { should respond_to(:email) }
+  it { should respond_to(:encrypted_password) }
+  it { should respond_to(:sign_in_count) }
+  it { should respond_to(:current_sign_in_at) }
+  it { should respond_to(:current_sign_in_ip) }
+  it { should respond_to(:last_sign_in_at) }
+  it { should respond_to(:last_sign_in_ip) } 
 end
