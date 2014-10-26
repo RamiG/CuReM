@@ -12,4 +12,10 @@ describe Client do
   it { should respond_to(:phone) }
   it { should respond_to(:birthdate) }
   it { should respond_to(:terms_accepted) }
+
+  describe '#full_name' do
+    let(:full_name) { "#{client.first_name} #{client.last_name}" }
+
+    its(:full_name) { should eq(full_name) }
+  end
 end

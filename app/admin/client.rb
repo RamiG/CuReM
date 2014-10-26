@@ -1,8 +1,7 @@
 ActiveAdmin.register Client do
-  permit_params :first_name, :last_name, :birthdate, :email, :phone, :password, :password_confirmation
+  permit_params :first_name, :last_name, :birthdate, :email, :phone, :terms_accepted
 
   index do
-    selectable_column
     id_column
     column :first_name
     column :last_name
@@ -12,20 +11,22 @@ ActiveAdmin.register Client do
     actions
   end
 
-  # filter :email
-  # filter :current_sign_in_at
-  # filter :sign_in_count
-  # filter :created_at
+  filter :first_name
+  filter :last_name
+  filter :birthdate
+  filter :email
+  filter :phone
+
+  show title: proc { |client| client.full_name }
 
   form do |f|
     f.inputs "Client Details" do
       f.input :first_name
       f.input :last_name
-      f.input :birthdate
+      f.input :birthdate, start_year: 1950
       f.input :email
       f.input :phone
-      f.input :password
-      f.input :password_confirmation
+      f.input :terms_accepted
     end
     f.actions
   end
