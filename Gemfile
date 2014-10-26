@@ -22,6 +22,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails'
   gem 'rspec-its'
+  gem 'shoulda-matchers'
 
   gem 'byebug'
   gem 'pry'
