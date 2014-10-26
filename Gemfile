@@ -8,7 +8,23 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
 gem 'activeadmin', github: 'activeadmin'
 gem 'pg'
+
+group :doc do
+  gem 'sdoc', '~> 0.4.0'
+end
+
+group :development do
+  gem 'spring'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rspec-its'
+  gem 'capybara'
+
+  gem 'pry'
+  gem 'byebug'
+  gem 'pry-byebug'
+end
