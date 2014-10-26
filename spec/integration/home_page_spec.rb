@@ -1,10 +1,9 @@
 describe 'Home page' do
 
-  subject {
-    visit root_path
-    last_respnose
-  }
+  before { visit root_path }
 
-  its(:status) { should eq(200) }
+  subject { page }
+  
+  it { should have_content('CuReM') }
 
 end
