@@ -18,11 +18,13 @@ end
 
 group :development, :test do
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'shoulda-matchers'
+  gem 'selenium-webdriver'
 
   gem 'byebug'
   gem 'pry'
