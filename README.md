@@ -1,2 +1,2 @@
 # **CuReM**
-[![Code Climate](https://codeclimate.com/github/RamiG/CuReM/badges/gpa.svg)](https://codeclimate.com/github/RamiG/CuReM)
+[![Code Climate](https://codeclimate.com/github/RamiG/CuReM/badges/gpa.svg)](https://codeclimate.com/github/RamiG/CuReM)  [![Build Status](https://travis-ci.org/RamiG/CuReM.svg?branch=master)](https://travis-ci.org/RamiG/CuReM)
