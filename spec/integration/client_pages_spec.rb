@@ -17,7 +17,7 @@ describe 'Client pages' do
     it { should have_link(client2.id, href: admin_client_path(client2)) }
     it { should have_link(client3.id, href: admin_client_path(client3)) }
 
-    context 'view lient' do
+    context 'view сlient' do
       before { click_link(client2.id, href: admin_client_path(client2)) }
 
       it { should have_css('#page_title', text: client2.full_name) }
@@ -28,6 +28,33 @@ describe 'Client pages' do
       it { should have_css('tr', text: client2.phone) }
       it { should have_css('tr', text: client2.terms_accepted) }
     end
+
+    context 'edit client' do
+      let(:update_client) { FactoryGirl.build(:client) }
+
+      before do
+        click_link('Edit', href: edit_admin_client_path(client1))
+        fill_in_client_controls(update_client)
+        click_button 'Update Client'
+      end
+
+      subject { client1.reload }
+
+      its(:first_name) { should eq(update_client.first_name) }
+      its(:last_name) { should eq(update_client.last_name) }
+      its(:birthdate) { should eq(update_client.birthdate) }
+      its(:email) { should eq(update_client.email) }
+      its(:phone) { should eq(update_client.phone) }
+      its(:terms_accepted) { should eq(update_client.terms_accepted) }
+    end
+
+    context 'delete client' do
+      before { click_link('Delete', href: admin_client_path(client3)) }
+
+      it 'should delete client' do
+        expect { client3.reload }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
   end
 
   context 'new client' do
@@ -35,15 +62,7 @@ describe 'Client pages' do
 
     before do
       visit new_admin_client_path
-
-      fill_in 'First name', with: new_client.first_name
-      fill_in 'Last name', with: new_client.last_name
-      select '1950', from: 'client_birthdate_1i'
-      select 'March', from: 'client_birthdate_2i'
-      select '19', from: 'client_birthdate_3i'
-      fill_in 'Email', with: new_client.email
-      fill_in 'Phone', with: new_client.phone
-      check 'Terms accepted'
+      fill_in_client_controls(new_client)
       click_button 'Create Client'
     end
 
