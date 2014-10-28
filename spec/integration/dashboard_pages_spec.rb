@@ -4,9 +4,11 @@ describe 'Admin dashboard pages' do
 
   before { sign_in(admin) }
 
-  subject { page }
+  subject { page.find('div#header') }
 
-  it { should have_content('CuReM') }
-  it { should have_content('Dashboard') }
+  it { should have_css('h1', text: 'CuReM') }
+  it { should have_link('Dashboard') }
+  it { should have_link('Clients') }
+  it { should have_link('Messages') }
 
 end

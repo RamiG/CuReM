@@ -13,4 +13,12 @@ FactoryGirl.define do
     phone { Faker::PhoneNumber.cell_phone }
     terms_accepted false
   end
+
+  factory :message do
+    title { Faker::Lorem::word }
+    message_type { Message::TYPES.first}
+    message_text { Faker::Lorem::sentence }
+    deliver_date { Date.today }
+    deliver_time { Time.now }
+  end
 end
