@@ -10,3 +10,5 @@ before_script:
 script: 
   - bundle exec rake --trace db:migrate RAILS_ENV=test
   - bundle exec rspec spec
+notification:
+  - never
