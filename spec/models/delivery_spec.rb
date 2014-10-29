@@ -18,14 +18,14 @@ describe Delivery do
     context '#perform_deliveries' do
       let!(:client) { FactoryGirl.create(:client) }
 
-      before { subject.send(:perform_deliveries) }
+      before { delivery.send(:perform_deliveries) }
 
       it 'should deliver email to each client' do
         expect(ActionMailer::Base.deliveries.count).to eq(1)
       end
 
       describe 'delivered email' do
-        subject { ActionMailer::Base.deliveries.first }
+        subject { ActionMailer::Base.deliveries.last }
 
         its(:subject) { should eq(delivery.title) }
         its(:to) { should eq([client.email]) }

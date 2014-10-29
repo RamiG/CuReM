@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20141029055950) do
     t.string   "title",              null: false
     t.string   "message_type",       null: false
     t.text     "message_text"
-    t.string   "delivery_rate"
+    t.string   "delivery_rate",      null: false
     t.date     "next_delivery_date", null: false
     t.time     "next_delivery_time", null: false
     t.string   "state"
