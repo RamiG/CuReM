@@ -1,5 +1,3 @@
-require "rails_helper"
-
 RSpec.describe ClientMailer, :type => :mailer do
   describe 'ads_email' do
     let(:client) { FactoryGirl.create(:client) }
