@@ -24,6 +24,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
   gem 'selenium-webdriver'
 
   gem 'byebug'
