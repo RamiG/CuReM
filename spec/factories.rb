@@ -14,11 +14,12 @@ FactoryGirl.define do
     terms_accepted false
   end
 
-  factory :message do
+  factory :delivery do
     title { Faker::Lorem::word }
-    message_type { Message::TYPES.first}
+    message_type { Delivery::TYPES.first}
     message_text { Faker::Lorem::sentence }
-    deliver_date { Date.today }
-    deliver_time { Time.now }
+    delivery_rate { Delivery::RATES.sample }
+    next_delivery_date { Date.today }
+    next_delivery_time { Time.now }
   end
 end

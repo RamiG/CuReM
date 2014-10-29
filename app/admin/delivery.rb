@@ -1,5 +1,5 @@
-ActiveAdmin.register Message do
-  permit_params :title, :message_type, :message_text, :deliver_date, :deliver_time, :delivered
+ActiveAdmin.register Delivery do
+  permit_params :title, :message_type, :message_text, :delivery_type, :next_delivery_date, :next_delivery_time, :state
 
   index do
     id_column
@@ -14,7 +14,7 @@ ActiveAdmin.register Message do
   end
 
   filter :title
-  filter :message_type, as: :select, collection: Message::TYPES
+  filter :message_type, as: :select, collection: Delivery::TYPES
   filter :deliver_date
   filter :deliver_time
   filter :delivered
@@ -22,7 +22,7 @@ ActiveAdmin.register Message do
   form do |f|
     f.inputs "Message Details" do
       f.input :title
-      f.input :message_type, as: :select, collection: Message::TYPES
+      f.input :message_type, as: :select, collection: Delivery::TYPES
       f.input :message_text
       f.input :deliver_date, as: :datepicker
       f.input :deliver_time, as: :time_picker

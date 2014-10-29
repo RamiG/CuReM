@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028123925) do
+ActiveRecord::Schema.define(version: 20141029055950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,21 +66,22 @@ ActiveRecord::Schema.define(version: 20141028123925) do
   add_index "clients", ["last_name"], name: "index_clients_on_last_name", using: :btree
   add_index "clients", ["phone"], name: "index_clients_on_phone", using: :btree
 
-  create_table "messages", force: true do |t|
-    t.string   "title",                        null: false
-    t.string   "message_type",                 null: false
+  create_table "deliveries", force: true do |t|
+    t.string   "title",              null: false
+    t.string   "message_type",       null: false
     t.text     "message_text"
-    t.date     "deliver_date",                 null: false
-    t.time     "deliver_time",                 null: false
-    t.boolean  "delivered",    default: false, null: false
+    t.string   "delivery_rate"
+    t.date     "next_delivery_date", null: false
+    t.time     "next_delivery_time", null: false
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["deliver_date"], name: "index_messages_on_deliver_date", using: :btree
-  add_index "messages", ["deliver_time"], name: "index_messages_on_deliver_time", using: :btree
-  add_index "messages", ["delivered"], name: "index_messages_on_delivered", using: :btree
-  add_index "messages", ["message_type"], name: "index_messages_on_message_type", using: :btree
-  add_index "messages", ["title"], name: "index_messages_on_title", using: :btree
+  add_index "deliveries", ["delivery_rate"], name: "index_deliveries_on_delivery_rate", using: :btree
+  add_index "deliveries", ["message_type"], name: "index_deliveries_on_message_type", using: :btree
+  add_index "deliveries", ["next_delivery_date"], name: "index_deliveries_on_next_delivery_date", using: :btree
+  add_index "deliveries", ["state"], name: "index_deliveries_on_state", using: :btree
+  add_index "deliveries", ["title"], name: "index_deliveries_on_title", using: :btree
 
 end
