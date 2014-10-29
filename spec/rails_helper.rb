@@ -52,6 +52,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include DashboardHelper
   config.include ClientsHelper
+  config.include DeliveriesHelper
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

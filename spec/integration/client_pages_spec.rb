@@ -1,15 +1,16 @@
 describe 'Client pages' do
 
   let(:admin) { FactoryGirl.create(:admin_user) }
-  let!(:client1) { FactoryGirl.create(:client) }
-  let!(:client2) { FactoryGirl.create(:client) }
-  let!(:client3) { FactoryGirl.create(:client) }
 
   before { sign_in(admin) }
 
   subject { page }
 
   context 'index' do
+    let!(:client1) { FactoryGirl.create(:client) }
+    let!(:client2) { FactoryGirl.create(:client) }
+    let!(:client3) { FactoryGirl.create(:client) }
+
     before { visit admin_clients_path }
 
     it { should have_css('#page_title', text: 'Clients') }
@@ -68,7 +69,7 @@ describe 'Client pages' do
 
     it 'should create new client' do
       expect(page).to have_css('div.flash_notice')
-      expect(Client.count).to eq(4)
+      expect(Client.count).to eq(1)
     end
   end
 end
