@@ -4,13 +4,18 @@ class Delivery < ActiveRecord::Base
 
   validates_presence_of :title, :message_type, :delivery_rate, :next_delivery_date, :next_delivery_time
 
-  after_create :perform_deliveries
+  scope :scheduled_emails, -> { where(message_type: :email, state: :scheduled) }
 
-  private
+  state_machine :state, initial: :scheduled do
+    event :perform do
+      transition :scheduled => :delivered
+    end
+  end
 
-  def perform_deliveries
+  def perform
     clients = Client.all
     mailing_service = MailingService.new(self)
     mailing_service.deliver_to(clients)
+    super
   end
 end

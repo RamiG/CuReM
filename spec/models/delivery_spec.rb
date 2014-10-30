@@ -11,25 +11,36 @@ describe Delivery do
   it { should validate_presence_of(:next_delivery_time) }
   it { should respond_to(:message_text) }
   it { should respond_to(:state) }
+  its(:state) { should eq('scheduled') }
 
-  describe 'callbacks' do
-    it { should callback(:perform_deliveries).after(:create) }
+  describe '.scheduled_emails' do
+    let!(:sms_delivery) { FactoryGirl.create(:delivery, message_type: :sms) }
+    let!(:email_delivery) { FactoryGirl.create(:delivery, message_type: :email) }
+    let!(:delivered_delivery) { FactoryGirl.create(:delivery, message_type: :email, state: :delivered) }
 
-    context '#perform_deliveries' do
-      let!(:client) { FactoryGirl.create(:client) }
+    it 'should return scheduled emails deliveries' do
+      expect(described_class.scheduled_emails).to eq([email_delivery])
+    end
+  end
 
-      before { delivery.send(:perform_deliveries) }
+  describe '#perform' do
+    let!(:client) { FactoryGirl.create(:client) }
 
-      it 'should deliver email to each client' do
-        expect(ActionMailer::Base.deliveries.count).to eq(1)
-      end
+    before { delivery.send(:perform) }
 
-      describe 'delivered email' do
-        subject { ActionMailer::Base.deliveries.last }
+    it 'should deliver email to each client' do
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+    end
 
-        its(:subject) { should eq(delivery.title) }
-        its(:to) { should eq([client.email]) }
-      end
+    it 'should change delivery state to delivered' do
+      expect(delivery.state).to eq('delivered')
+    end
+
+    describe 'delivered email' do
+      subject { ActionMailer::Base.deliveries.last }
+
+      its(:subject) { should eq(delivery.title) }
+      its(:to) { should eq([client.email]) }
     end
   end
 end

@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 gem 'pg'
+gem 'rufus-scheduler'
+gem 'state_machine'
 
 group :development do
   gem 'spring'
