@@ -4,7 +4,7 @@ class SchedulingService
   def generate
     scheduler.at_jobs.each { |job| scheduler.unschedule(job) }
 
-    deliveries = Delivery.scheduled_emails
+    deliveries = Delivery.scheduled
     deliveries.each do |delivery|
       moment =  delivery.next_delivery_date.strftime('%F')
       moment << delivery.next_delivery_time.strftime(' %H:%M')

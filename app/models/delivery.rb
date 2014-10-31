@@ -1,9 +1,13 @@
 class Delivery < ActiveRecord::Base
+  extend Enumerize
+
   TYPES = %i(email sms)
 
   validates_presence_of :title, :message_type, :next_delivery_date, :next_delivery_time
 
-  scope :scheduled_emails, -> { where(message_type: :email, state: :scheduled) }
+  enumerize :message_type, in: TYPES, predicates: true
+
+  scope :scheduled, -> { where(state: :scheduled) }
 
   state_machine :state, initial: :scheduled do
     event :perform do
@@ -13,8 +17,8 @@ class Delivery < ActiveRecord::Base
 
   def perform
     clients = Client.all
-    mailing_service = MailingService.new(self)
-    mailing_service.deliver_to(clients)
+    service = self.email? ? MailingService.new(self) : SmsService.new(self)
+    service.deliver_to(clients)
     super
   end
 end

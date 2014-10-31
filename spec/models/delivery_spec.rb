@@ -10,15 +10,16 @@ describe Delivery do
   it { should validate_presence_of(:next_delivery_time) }
   it { should respond_to(:message_text) }
   it { should respond_to(:state) }
+  it { should enumerize(:message_type).in(*Delivery::TYPES) }
   its(:state) { should eq('scheduled') }
 
-  describe '.scheduled_emails' do
+  describe '.scheduled' do
     let!(:sms_delivery) { FactoryGirl.create(:delivery, message_type: :sms) }
     let!(:email_delivery) { FactoryGirl.create(:delivery, message_type: :email) }
     let!(:delivered_delivery) { FactoryGirl.create(:delivery, message_type: :email, state: :delivered) }
 
     it 'should return scheduled emails deliveries' do
-      expect(described_class.scheduled_emails).to eq([email_delivery])
+      expect(described_class.scheduled.order(:message_type)).to eq([email_delivery, sms_delivery])
     end
   end
 
