@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029055950) do
+ActiveRecord::Schema.define(version: 20141031062213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20141029055950) do
     t.string   "title",              null: false
     t.string   "message_type",       null: false
     t.text     "message_text"
-    t.string   "delivery_rate",      null: false
     t.date     "next_delivery_date", null: false
     t.time     "next_delivery_time", null: false
     t.string   "state"
@@ -78,7 +77,6 @@ ActiveRecord::Schema.define(version: 20141029055950) do
     t.datetime "updated_at"
   end
 
-  add_index "deliveries", ["delivery_rate"], name: "index_deliveries_on_delivery_rate", using: :btree
   add_index "deliveries", ["message_type"], name: "index_deliveries_on_message_type", using: :btree
   add_index "deliveries", ["next_delivery_date"], name: "index_deliveries_on_next_delivery_date", using: :btree
   add_index "deliveries", ["state"], name: "index_deliveries_on_state", using: :btree

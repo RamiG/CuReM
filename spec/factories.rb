@@ -18,7 +18,6 @@ FactoryGirl.define do
     title { Faker::Lorem::word }
     message_type { Delivery::TYPES.first}
     message_text { Faker::Lorem::sentence }
-    delivery_rate { Delivery::RATES.sample }
     next_delivery_date { Date.today }
     next_delivery_time { Time.now }
   end

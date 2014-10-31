@@ -23,7 +23,6 @@ describe 'Delivery pages' do
 
       it { should have_css('#page_title', text: delivery2.title) }
       it { should have_css('tr', text: delivery2.message_type) }
-      it { should have_css('tr', text: delivery2.delivery_rate) }
       it { should have_css('tr', text: delivery2.next_delivery_date.strftime('%B %d, %Y')) }
       it { should have_css('tr', text: delivery2.next_delivery_time.utc.strftime('%H:%M')) }
       it { should have_css('tr', text: delivery2.state) }
@@ -43,7 +42,6 @@ describe 'Delivery pages' do
       its(:title) { should eq(update_delivery.title) }
       its(:message_type) { should eq(update_delivery.message_type.to_s) }
       its(:message_text) { should eq(update_delivery.message_text) }
-      its(:delivery_rate) { should eq(update_delivery.delivery_rate.to_s) }
       its(:next_delivery_date) { should eq(update_delivery.next_delivery_date) }
       its(:state) { should eq(update_delivery.state) }
       it 'should have correct next_delivery_time' do

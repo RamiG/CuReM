@@ -1,5 +1,5 @@
 ActiveAdmin.register Delivery do
-  permit_params :title, :message_type, :message_text, :delivery_rate, :next_delivery_date, :next_delivery_time, :state
+  permit_params :title, :message_type, :message_text, :next_delivery_date, :next_delivery_time, :state
 
   index do
     id_column
@@ -18,7 +18,6 @@ ActiveAdmin.register Delivery do
     attributes_table do
       row :title
       row :message_type
-      row :delivery_rate
       row :next_delivery_date
       row :next_delivery_time do
         delivery.next_delivery_time.strftime('%H:%M')
@@ -29,7 +28,6 @@ ActiveAdmin.register Delivery do
 
   filter :title
   filter :message_type, as: :select, collection: Delivery::TYPES
-  filter :delivery_rate, as: :select, collection: Delivery::RATES
   filter :next_delivery_date
   filter :next_delivery_time
   filter :state
@@ -39,7 +37,6 @@ ActiveAdmin.register Delivery do
       f.input :title
       f.input :message_type, as: :select, collection: Delivery::TYPES
       f.input :message_text
-      f.input :delivery_rate, as: :select, collection: Delivery::RATES
       f.input :next_delivery_date, as: :datepicker
       f.input :next_delivery_time, as: :time_picker
     end
