@@ -1,9 +1,9 @@
 module DashboardHelper
   def sign_in(admin)
     visit root_path
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
-    click_button 'Login'
+    fill_in 'admin_user_email', with: admin.email
+    fill_in 'admin_user_password', with: admin.password
+    find(:xpath, '//input[@name="commit"]').click
     expect(page).to have_css('div.flash_notice')
   end
 
