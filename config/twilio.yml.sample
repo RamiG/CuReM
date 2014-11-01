@@ -1,14 +1,14 @@
 development:
   from:
-	sid:
-	token:
+  sid:
+  token:
 
 test:
   from:
-	sid:
-	token:
+  sid:
+  token:
 
 production:
   from:
-	sid:
-	token:
+  sid:
+  token:
