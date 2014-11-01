@@ -5,6 +5,7 @@ env:
   - DB=postgresql
 before_install:
   - mv ./config/database.yml.sample ./config/database.yml
+  - mv ./config/twilio.yml.sample ./config/twilio.yml
 before_script:
   - psql -c 'create database curem_test' -U postgres
 script:
