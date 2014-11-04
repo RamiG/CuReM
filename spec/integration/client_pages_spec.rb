@@ -13,7 +13,7 @@ describe 'Client pages' do
 
     before { visit admin_clients_path }
 
-    it { should have_css('#page_title', text: 'Clients') }
+    xit { should have_css('#page_title', text: 'Clients') }
     it { should have_link(client1.id, href: admin_client_path(client1)) }
     it { should have_link(client2.id, href: admin_client_path(client2)) }
     it { should have_link(client3.id, href: admin_client_path(client3)) }

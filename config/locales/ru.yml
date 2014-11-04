@@ -373,6 +373,11 @@ ru:
       last_word_connector: ! ' и '
       two_words_connector: ! ' и '
       words_connector: ! ', '
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%b %d"
+      long: "%B %d.%m.%Y"    
   time:
     am: утра
     formats:
@@ -380,3 +385,27 @@ ru:
       long: ! '%d %B %Y, %H:%M'
       short: ! '%d %b, %H:%M'
     pm: вечера
+
+  formtastic:
+    :yes: 'Yes'
+    :no: 'No'
+    :create: 'Создать %{model}'
+    :update: 'Изменить %{model}'
+    :submit: 'Сохранить %{model}'
+    :cancel: 'Отменить %{model}'
+    :reset: 'Сбросить %{model}'
+    :required: 'требуется'    
+
+  activerecord:
+    models:
+      delivery:
+        one: Рассылка
+        other: Рассылки
+      client: 
+        one: Клиент
+        other: Клиенты
+    attributes:
+      delivery:
+        title: Заголовок
+        message_type: Тип сообщения
+        message_text: Текст сообщения
