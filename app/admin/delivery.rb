@@ -33,7 +33,7 @@ ActiveAdmin.register Delivery do
   filter :state
 
   form do |f|
-    f.inputs "Message Details" do
+    f.inputs I18n.t(:details, model: Delivery.model_name.human, scope: 'active_admin') do
       f.input :title
       f.input :message_type, as: :select, collection: Delivery::TYPES
       f.input :message_text

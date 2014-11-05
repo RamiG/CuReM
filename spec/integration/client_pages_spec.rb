@@ -13,7 +13,7 @@ describe 'Client pages' do
 
     before { visit admin_clients_path }
 
-    xit { should have_css('#page_title', text: 'Clients') }
+    it { should have_css('#page_title', text: Client.model_name.human(count: 2)) }
     it { should have_link(client1.id, href: admin_client_path(client1)) }
     it { should have_link(client2.id, href: admin_client_path(client2)) }
     it { should have_link(client3.id, href: admin_client_path(client3)) }
@@ -24,19 +24,19 @@ describe 'Client pages' do
       it { should have_css('#page_title', text: client2.full_name) }
       it { should have_css('tr', text: client2.first_name) }
       it { should have_css('tr', text: client2.last_name) }
-      xit { should have_css('tr', text: client2.birthdate.strftime('%B %d, %Y')) }
+      it { should have_css('tr', text: I18n.l(client2.birthdate, format: :long)) }
       it { should have_css('tr', text: client2.email) }
       it { should have_css('tr', text: client2.phone) }
       it { should have_css('tr', text: client2.terms_accepted) }
     end
 
-    context 'edit client', pending: true do
+    context 'edit client' do
       let(:update_client) { FactoryGirl.build(:client) }
 
       before do
         click_link(I18n.t('edit', scope: 'active_admin'), href: edit_admin_client_path(client1))
         fill_in_client_controls(update_client)
-        click_button 'Update Client'
+        find(:xpath, '//input[@name="commit"]').click
       end
 
       subject { client1.reload }
@@ -64,10 +64,10 @@ describe 'Client pages' do
     before do
       visit new_admin_client_path
       fill_in_client_controls(new_client)
-      click_button 'Create Client'
+      find(:xpath, '//input[@name="commit"]').click
     end
 
-    xit 'should create new client' do
+    it 'should create new client' do
       expect(page).to have_css('div.flash_notice')
       expect(Client.count).to eq(1)
     end

@@ -8,11 +8,11 @@ ru:
     edit: "Изменить"
     delete: "Удалить"
     delete_confirmation: "Вы уверены, что хотите удалить это?"
-    new_model: "Создать %{model}"
-    create_model: "Создать %{model}"
-    edit_model: "Изменить %{model}"
-    update_model: "Изменить %{model}"
-    delete_model: "Удалить %{model}"
+    new_model: "Создать"
+    create_model: "Создать"
+    edit_model: "Изменить"
+    update_model: "Изменить"
+    delete_model: "Удалить"
     details: "%{model} подробнее"
     cancel: "Отмена"
     empty: "Пусто"
@@ -373,11 +373,6 @@ ru:
       last_word_connector: ! ' и '
       two_words_connector: ! ' и '
       words_connector: ! ', '
-  date:
-    formats:
-      default: "%d-%m-%Y"
-      short: "%b %d"
-      long: "%B %d.%m.%Y"    
   time:
     am: утра
     formats:
@@ -400,11 +395,11 @@ ru:
   formtastic:
     :yes: 'Yes'
     :no: 'No'
-    :create: 'Создать %{model}'
-    :update: 'Изменить %{model}'
-    :submit: 'Сохранить %{model}'
-    :cancel: 'Отменить %{model}'
-    :reset: 'Сбросить %{model}'
+    :create: 'Создать'
+    :update: 'Изменить'
+    :submit: 'Сохранить'
+    :cancel: 'Отменить'
+    :reset: 'Сбросить'
     :required: 'требуется'    
 
   activerecord:
@@ -415,8 +410,37 @@ ru:
       client: 
         one: Клиент
         other: Клиенты
+      active_admin/comment:
+        one: Комментарий
+        other: Комментарии
+      comment:
+        one: Комментарий
+        other: Комментарии 
     attributes:
+      client:
+        id: ID
+        first_name: Имя
+        last_name: Фамилия
+        birthdate: Дата рождения
+        terms_accepted: Согласен с условиями
+        phone: Телефон
+        created_at: Создано
+        updated_at: Изменено
       delivery:
+        id: ИД
         title: Заголовок
         message_type: Тип сообщения
         message_text: Текст сообщения
+        delivery_type: Тип рассылки
+        next_delivery_date: Дата
+        next_delivery_time: Время
+        state: Статус
+        created_at: Создано
+        updated_at: Изменено
+      active_admin/comment:
+        resource_type: Ресурс
+        author_type: Автор
+        namespace: Раздел
+        body: Текст
+        created_at: Создано
+        updated_at: Изменено

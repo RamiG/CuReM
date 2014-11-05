@@ -8,7 +8,7 @@ describe 'Admin dashboard pages' do
 
   it { should have_css('h1', text: 'CuReM') }
   it { should have_link(I18n.t('dashboard', scope: 'active_admin')) }
-  xit { should have_link('Clients') }
-  it { should have_link('Comments') }
-  xit { should have_link('Deliveries') }
+  it { should have_link(Client.model_name.human(count: 2)) }
+  it { should have_link(ActiveAdmin::Comment.model_name.human(count: 2)) }
+  it { should have_link(Delivery.model_name.human(count: 2)) }
 end

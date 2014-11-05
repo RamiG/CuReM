@@ -23,7 +23,7 @@ describe 'Delivery pages' do
 
       it { should have_css('#page_title', text: delivery2.title) }
       it { should have_css('tr', text: delivery2.message_type) }
-      it { should have_css('tr', text: delivery2.next_delivery_date.strftime('%d.%m.%Y')) }
+      it { should have_css('tr', text: I18n.l(delivery2.next_delivery_date, format: :long)) }
       it { should have_css('tr', text: delivery2.next_delivery_time.utc.strftime('%H:%M')) }
       it { should have_css('tr', text: delivery2.state) }
     end

@@ -20,7 +20,7 @@ ActiveAdmin.register Client do
   show title: proc { |client| client.full_name }
 
   form do |f|
-    f.inputs "Client Details" do
+    f.inputs I18n.t(:details, model: Client.model_name.human, scope: 'active_admin') do
       f.input :first_name
       f.input :last_name
       f.input :birthdate, start_year: 1950
