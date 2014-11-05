@@ -385,6 +385,17 @@ ru:
       long: ! '%d %B %Y, %H:%M'
       short: ! '%d %b, %H:%M'
     pm: вечера
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} успешно создан(а)."
+        alert: "%{resource_name} не создан(а)."
+      update:
+        notice: "%{resource_name} успешно изменен(а)."
+        alert: "%{resource_name} не изменен(а)."
+      destroy:
+        notice: "%{resource_name} успешно удален."
+        alert: "%{resource_name} не удален."  
 
   formtastic:
     :yes: 'Yes'

@@ -58,7 +58,7 @@ describe 'Delivery pages' do
     end
   end
 
-  context 'new delivery', pending: true do
+  context 'new delivery' do
     let(:new_delivery) { FactoryGirl.build(:delivery) }
 
     before do
