@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :discount_type do
+    
+  end
+
   factory :admin_user do
     email { Faker::Internet::safe_email }
     password 'pa$sword'

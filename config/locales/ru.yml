@@ -390,7 +390,7 @@ ru:
         alert: "%{resource_name} не изменен(а)."
       destroy:
         notice: "%{resource_name} успешно удален."
-        alert: "%{resource_name} не удален."  
+        alert: "%{resource_name} не удален."
 
   formtastic:
     :yes: 'Yes'
@@ -400,14 +400,14 @@ ru:
     :submit: 'Сохранить'
     :cancel: 'Отменить'
     :reset: 'Сбросить'
-    :required: 'требуется'    
+    :required: 'требуется'
 
   activerecord:
     models:
       delivery:
         one: Рассылка
         other: Рассылки
-      client: 
+      client:
         one: Клиент
         other: Клиенты
       active_admin/comment:
@@ -415,7 +415,10 @@ ru:
         other: Комментарии
       comment:
         one: Комментарий
-        other: Комментарии 
+        other: Комментарии
+      discount_type:
+        one: Скидка
+        other: Скидки
     attributes:
       client:
         id: ID
@@ -444,3 +447,7 @@ ru:
         body: Текст
         created_at: Создано
         updated_at: Изменено
+      discount_type:
+        id: ИД
+        rate: Процент
+        name: Название

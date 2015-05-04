@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031062213) do
+ActiveRecord::Schema.define(version: 20150504081732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,5 +81,12 @@ ActiveRecord::Schema.define(version: 20141031062213) do
   add_index "deliveries", ["next_delivery_date"], name: "index_deliveries_on_next_delivery_date", using: :btree
   add_index "deliveries", ["state"], name: "index_deliveries_on_state", using: :btree
   add_index "deliveries", ["title"], name: "index_deliveries_on_title", using: :btree
+
+  create_table "discount_types", force: true do |t|
+    t.integer  "rate",                    null: false
+    t.string   "name",       default: "", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
