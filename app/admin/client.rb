@@ -1,5 +1,5 @@
 ActiveAdmin.register Client do
-  permit_params :first_name, :last_name, :birthdate, :email, :phone, :terms_accepted
+  permit_params :first_name, :last_name, :birthdate, :email, :phone, :terms_accepted, :discount_type_id
 
   index do
     id_column
@@ -8,6 +8,7 @@ ActiveAdmin.register Client do
     column :birthdate
     column :email
     column :phone
+    column :discount_type
     actions
   end
 
@@ -16,6 +17,7 @@ ActiveAdmin.register Client do
   filter :birthdate
   filter :email
   filter :phone
+  filter :discount_type
 
   show title: proc { |client| client.full_name }
 
@@ -26,6 +28,7 @@ ActiveAdmin.register Client do
       f.input :birthdate, start_year: 1950
       f.input :email
       f.input :phone
+      f.input :discount_type
       f.input :terms_accepted
     end
     f.actions

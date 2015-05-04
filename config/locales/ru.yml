@@ -427,6 +427,7 @@ ru:
         birthdate: Дата рождения
         terms_accepted: Согласен с условиями
         phone: Телефон
+        discount_type: Скидка
         created_at: Создано
         updated_at: Изменено
       delivery:
