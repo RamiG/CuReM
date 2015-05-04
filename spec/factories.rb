@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :discount_type do
+FactoryGirl.define do  factory :role do
+    
+  end
+  factory :discount_type do
     
   end
 

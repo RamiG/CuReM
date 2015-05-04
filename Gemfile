@@ -15,6 +15,7 @@ gem 'rufus-scheduler'
 gem 'state_machine'
 gem 'twilio-ruby'
 gem 'enumerize'
+gem 'rolify'
 
 group :development do
   gem 'spring'
